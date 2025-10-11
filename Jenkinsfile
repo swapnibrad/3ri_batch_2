@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        label 'n1'
-    }
+    agent any
+    // agent {
+    //     label 'abc'
+    // }
 
     environment {
         WEB_ROOT = '/var/www/html'
