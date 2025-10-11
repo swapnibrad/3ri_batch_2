@@ -10,8 +10,8 @@ pipeline {
             steps {
                 echo '📥 Cloning GitHub repository...'
                 git branch: 'main',
-                    credentialsId: '4ea7f9b9-dfce-4d92-bb98-18655846c31a',
-                    url: 'https://github.com/swapnibrad/3ri_batch_2.git'
+                    credentialsId: '018b692a-c565-4a80-a254-6602619fbc68',
+                    url: 'git@github.com:swapnibrad/3ri_batch_2.git'
             }
         }
 
