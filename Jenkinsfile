@@ -1,34 +1,63 @@
 pipeline {
-    agent any    
+    agent any
+
+    environment {
+        WEB_ROOT = '/var/www/html'
+        SRC_DIR  = '/home/ubuntu'
+    }
+
     stages {
-        stage('install pkgs') { 
+        stage('Update System') {
             steps {
-                sh ''' 
-               echo "install nginx application"
-               sudo yum update
-               sudo yum install http -y
-             '''
+                echo 'Updating system packages...'
+                sh '''
+                    sudo apt-get update -y
+                    sudo apt-get upgrade -y
+                '''
             }
         }
-        stage('configure appln') { 
+
+        stage('Install NGINX') {
             steps {
-                sh ''' 
-                echo "this is test stage"
-                systemctl start http
-                systemctl enable http
-             '''
+                echo 'Installing NGINX...'
+                sh '''
+                    if ! command -v nginx > /dev/null; then
+                        sudo apt-get install -y nginx
+                    else
+                        echo "NGINX already installed"
+                    fi
+                    sudo systemctl enable nginx
+                    sudo systemctl start nginx
+                '''
             }
         }
-        stage('web-page') { 
+
+        stage('Deploy Web Files') {
             steps {
-                echo "this is test deploymment1"
-                sh ' sudo cp -r /home/ec2-user/2095_level/ /var/www/html'
+                echo 'Deploying index.html and dependencies...'
+                sh '''
+                    sudo rm -rf ${WEB_ROOT}/*
+                    sudo cp -r ${SRC_DIR}/* ${WEB_ROOT}/
+                    sudo chown -R www-data:www-data ${WEB_ROOT}
+                    sudo chmod -R 755 ${WEB_ROOT}
+                '''
             }
         }
-        stage('Deployment') { 
+
+        stage('Restart NGINX') {
             steps {
-                echo "this is test deploymment2"
+                echo 'Restarting NGINX...'
+                sh 'sudo systemctl restart nginx'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment successful! NGINX is serving your site.'
+        }
+        failure {
+            echo '❌ Deployment failed. Check Jenkins logs for details.'
         }
     }
 }
