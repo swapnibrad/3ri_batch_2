@@ -3,41 +3,36 @@ pipeline {
 
     environment {
         WEB_ROOT = '/var/www/html'
-        SRC_DIR  = '/home/ubuntu/2095_level'
     }
 
     stages {
-        stage('Update System') {
+        stage('Checkout Repository') {
             steps {
-                echo 'Updating system packages...'
-                sh '''
-                    sudo apt-get update -y
-                    sudo apt-get upgrade -y
-                '''
+                echo '📥 Cloning GitHub repository...'
+                git branch: 'main',
+                    credentialsId: 'f8e1f718-5f6a-4ddb-b99c-eaaf812abc97',
+                    url: 'https://github.com/swapnibrad/3ri_batch_2.git'
             }
         }
 
-        stage('Install NGINX') {
+        stage('Update & Install NGINX') {
             steps {
-                echo 'Installing NGINX...'
+                echo '🧰 Updating system and installing NGINX...'
                 sh '''
-                    if ! command -v nginx > /dev/null; then
-                        sudo apt-get install -y nginx
-                    else
-                        echo "NGINX already installed"
-                    fi
+                    sudo apt-get update -y
+                    sudo apt-get install -y nginx
                     sudo systemctl enable nginx
                     sudo systemctl start nginx
                 '''
             }
         }
 
-        stage('Deploy Web Files') {
+        stage('Deploy Website') {
             steps {
-                echo 'Deploying index.html and dependencies...'
+                echo '🚀 Deploying website files to /var/www/html...'
                 sh '''
                     sudo rm -rf ${WEB_ROOT}/*
-                    sudo cp -r ${SRC_DIR}/* ${WEB_ROOT}/
+                    sudo cp -r * ${WEB_ROOT}/
                     sudo chown -R www-data:www-data ${WEB_ROOT}
                     sudo chmod -R 755 ${WEB_ROOT}
                 '''
@@ -46,7 +41,7 @@ pipeline {
 
         stage('Restart NGINX') {
             steps {
-                echo 'Restarting NGINX...'
+                echo '🔁 Restarting NGINX...'
                 sh 'sudo systemctl restart nginx'
             }
         }
@@ -54,10 +49,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Deployment successful! NGINX is serving your site.'
+            echo '✅ Deployment successful — site is live!'
         }
         failure {
-            echo '❌ Deployment failed. Check Jenkins logs for details.'
+            echo '❌ Deployment failed — check the logs.'
         }
     }
 }
