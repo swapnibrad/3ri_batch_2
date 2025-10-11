@@ -5,7 +5,8 @@ pipeline {
             steps {
                 sh ''' 
                echo "install nginx application"
-               sudo apt-get install nginx -y
+               sudo yum update
+               sudo yum install http -y
              '''
             }
         }
@@ -13,15 +14,15 @@ pipeline {
             steps {
                 sh ''' 
                 echo "this is test stage"
-                systemctl start nginx
-                systemctl enable nginx
+                systemctl start http
+                systemctl enable http
              '''
             }
         }
         stage('web-page') { 
             steps {
                 echo "this is test deploymment1"
-                sh ' sudo cp /home/ubuntu/2095_level/ /var/www/html'
+                sh ' sudo cp -r /home/ec2-user/2095_level/ /var/www/html'
             }
         }
         stage('Deployment') { 
