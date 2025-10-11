@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         WEB_ROOT = '/var/www/html'
-        SRC_DIR  = '/home/ubuntu'
+        SRC_DIR  = '/home/ubuntu/2095_level'
     }
 
     stages {
