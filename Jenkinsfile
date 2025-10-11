@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'n1'
+    }
 
     environment {
         WEB_ROOT = '/var/www/html'
@@ -10,8 +12,8 @@ pipeline {
         //     steps {
         //         echo '📥 Cloning GitHub repository...'
         //         git branch: 'main',
-        //             credentialsId: '018b692a-c565-4a80-a254-6602619fbc68',
-        //             url: 'git@github.com:swapnibrad/3ri_batch_2.git'
+        //             credentialsId: 'a3dfc393-02f4-49f2-bc9d-584e2cb67fbf',
+        //             url: 'https://github.com/swapnibrad/3ri_batch_2.git'
         //     }
         // }
 
