@@ -6,14 +6,14 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Repository') {
-            steps {
-                echo '📥 Cloning GitHub repository...'
-                git branch: 'main',
-                    credentialsId: '018b692a-c565-4a80-a254-6602619fbc68',
-                    url: 'git@github.com:swapnibrad/3ri_batch_2.git'
-            }
-        }
+        // stage('Checkout Repository') {
+        //     steps {
+        //         echo '📥 Cloning GitHub repository...'
+        //         git branch: 'main',
+        //             credentialsId: '018b692a-c565-4a80-a254-6602619fbc68',
+        //             url: 'git@github.com:swapnibrad/3ri_batch_2.git'
+        //     }
+        // }
 
         stage('Update & Install NGINX') {
             steps {
