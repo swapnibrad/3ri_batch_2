@@ -6,6 +6,7 @@ pipeline {
 
     environment {
         WEB_ROOT = '/var/www/html'
+        source   = '/home/ubuntu/2095_level'
     }
 
     stages {
@@ -35,7 +36,7 @@ pipeline {
                 echo '🚀 Deploying website files to /var/www/html...'
                 sh '''
                     sudo rm -rf ${WEB_ROOT}/*
-                    sudo cp -r /home/ubuntu/2095_level/ ${WEB_ROOT}/
+                    sudo cp -r ${source}/ ${WEB_ROOT}/
                     sudo chown -R www-data:www-data ${WEB_ROOT}
                     sudo chmod -R 755 ${WEB_ROOT}
                 '''

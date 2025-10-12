@@ -1,6 +1,12 @@
 # 3ri_batch_2
 for learning purpose, to be access by batch
 ================================
+Error:    
++ sudo apt-get update -y
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+Solution:
 in sudoers file add => jenkins ALL=(ALL) NOPASSWD:ALL
 ================================
 For SSH Access
