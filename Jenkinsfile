@@ -39,6 +39,7 @@ pipeline {
                     sudo cp -r ${source}/ ${WEB_ROOT}/
                     sudo chown -R www-data:www-data ${WEB_ROOT}
                     sudo chmod -R 755 ${WEB_ROOT}
+                    mkdir node_123
                 '''
             }
         }
