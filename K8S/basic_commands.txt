@@ -1,0 +1,14 @@
+commands:
+		
+kubectl get service | svc
+kubectl get pods | pods --watch | pods -o wide | pods -A
+kubectl create deployment nginx --image nginx
+kubectl get deployment nginx -o yaml
+kubectl get pod <name of pod> -o yaml  (o => output )
+kubectl expose deployment nginx --port 80 --type=LoadBalancer
+Kubectl describe pods <name of pods>
+kubectl create deployment art-mongo --image mongo
+kubectl logs nginx-748c667d99-hmv47
+kubectl delete pod <name of pod>
+kubectl delete deployment <name of deployment>
+
