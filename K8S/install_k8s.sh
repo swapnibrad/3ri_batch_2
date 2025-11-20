@@ -16,4 +16,4 @@ chmod +x ./aws-iam-authenticator
 mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
 echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 aws-iam-authenticator help
-eksctl create cluster --name 3ri-cluster --region ap-northeast-1 --version 1.32 --node-type t2.micro --nodes 4
+eksctl create cluster --name 3ri-cluster --region us-east-2 --version 1.32 --node-type t2.micro --nodes 4
