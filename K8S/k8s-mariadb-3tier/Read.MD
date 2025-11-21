@@ -388,3 +388,50 @@ Backups: regularly snapshot EBS volumes for DB. Use managed RDS for simpler HA.
 Scaling: use HPA for the app deployment. MariaDB requires careful scaling — consider primary/replica or use Amazon RDS/Aurora for production HA.
 
 Health checks: add Liveness / Readiness probes to the Deployment spec for robust rolling updates.
+
+
+
+===================================
+✅ Fix the Issue
+=> ERROR [4/5] RUN npm ci --omit=dev
+
+1. Check inside your app directory
+
+Run:
+
+cd app
+ls -l
+
+
+You MUST see:
+
+package.json
+
+package-lock.json
+
+app.js
+
+If package-lock.json is missing, that is the cause.
+
+✅ 2. Regenerate package-lock.json on your local machine
+
+Inside the app folder:
+
+npm install
+
+
+This will create a fresh, valid package-lock.json.
+
+⚠️ Very Important:
+
+Do NOT generate the package-lock.json inside the container.
+It must already be present in the build context before docker build.
+
+🔧 3. Build again
+
+From root folder:
+
+docker build -t ${REPO_NAME}:${IMAGE_TAG} ./app
+
+
+This time it will work.

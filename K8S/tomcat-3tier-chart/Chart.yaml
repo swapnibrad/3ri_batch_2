@@ -1,0 +1,6 @@
+apiVersion: v2
+name: tomcat-3tier
+description: A 3-tier Tomcat application (Ingress -> Tomcat -> MariaDB)
+type: application
+version: 0.1.0
+appVersion: "9.0"

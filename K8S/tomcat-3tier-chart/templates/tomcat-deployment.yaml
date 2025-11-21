@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tomcat-3tier.fullname" . | default "tomcat-app" }}
+  labels:
+    app: tomcat-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: tomcat-app
+  template:
+    metadata:
+      labels:
+       app: tomcat-app
+    spec:
+      containers:
+      - name: tomcat
+        image: {{ include "tomcat-3tier.fullImage" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: mariadb
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secret
+              key: user
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secret
+              key: password
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secret
+              key: database

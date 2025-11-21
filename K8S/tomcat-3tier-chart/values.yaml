@@ -1,0 +1,36 @@
+replicaCount: 2
+
+image:
+  repository: tomcat
+  tag: 9-jdk11
+  pullPolicy: IfNotPresent
+
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: nginx
+  host: tomcat.example.com
+
+
+mariadb:
+  enabled: true
+  image: mariadb:10.6
+  rootPassword: RootStrongPass123!
+  database: appdb
+  user: appuser
+  password: AppPassw0rd
+  storage:
+    size: 20Gi
+    storageClass: "" # leave empty for default
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+podAnnotations: {}

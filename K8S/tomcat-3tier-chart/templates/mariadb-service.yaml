@@ -1,0 +1,12 @@
+# (if you want a separate service manifest for external access)
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-external
+spec:
+  selector:
+    app: mariadb
+  ports:
+  - port: 3306
+    targetPort: 3306
+  type: ClusterIP
