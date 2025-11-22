@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shubham-deployment
+  labels:
+    source: pristine
+    environment: development
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      source: pristine
+      environment: development
+  template:
+    metadata:
+      labels:
+        source: pristine
+        environment: development
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
