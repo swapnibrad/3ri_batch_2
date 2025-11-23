@@ -41,8 +41,8 @@ Save this value as:
 ECR_REPO=123456789012.dkr.ecr.ap-south-1.amazonaws.com/nodejs-app
 
 🔑 STEP 5 — Authenticate Docker to ECR
-aws ecr get-login-password --region ap-south-1 \
-| docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+aws ecr get-login-password --region ap-southeast-1 \
+| docker login --username AWS --password-stdin 659474939385.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-batch
 
 📦 STEP 6 — Tag the Docker Image
 docker tag nodejs-app:v1 $ECR_REPO:v1

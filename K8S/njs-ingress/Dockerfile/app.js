@@ -2,7 +2,7 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello Swapnil...!!! from Node.js on AWS EKS using ECR image!\n");
+  res.end("Hello Sakshi & Kajal ...!!! from Node.js on AWS EKS using ECR image  !!!!\n");
 });
 
 server.listen(3000, () => {

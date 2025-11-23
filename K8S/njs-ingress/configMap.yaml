@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nodejs-app-code
+  name: nodejs-app-code-1
 data:
   app.js: |
     const http = require('http');
 
     const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('Hello from Node.js running on Kubernetes EKS!\n');
+      res.end('Hello from batch of Devops... running on Kubernetes EKS!\n');
     });
 
     server.listen(3000, () => {
