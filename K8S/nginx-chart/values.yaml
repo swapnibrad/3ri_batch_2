@@ -1,0 +1,15 @@
+replicaCount: 1
+lable: nginx1
+depname: mynginxdep
+svcname: 
+  name: mynginxsvc
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80

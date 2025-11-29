@@ -11,12 +11,11 @@ kubectl create deployment art-mongo --image mongo
 kubectl logs nginx-748c667d99-hmv47
 kubectl delete pod <name of pod>
 kubectl delete deployment <name of deployment>
-i===============
+===============
 
 Kubectl logs -f pod/<pod name>  (latest  logs)
 Kubectl exec -it <pode> bash
 
-
 kubectl create deployment jenkins --image=jenkins/jenkins:lts
 kubectl expose deployment jenkins --port=8080 --target-port=8080 --type=LoadBalancer
-
+========================
