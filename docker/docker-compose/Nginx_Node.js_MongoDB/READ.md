@@ -40,7 +40,7 @@ Expected:
 Node.js API is Running!
 
 ✅ 2. Insert User Into MongoDB
-## curl -X POST http://localhost/user  -H "Content-Type: application/json"  -d '{"name":"Swapnil","email":"swapnil@example.com"}'
+## curl -X POST http://localhost/users  -H "Content-Type: application/json"  -d '{"name":"Swapnil","email":"swapnil@example.com"}'
 
 Expected:
 {"message":"User created","data":{...}}
