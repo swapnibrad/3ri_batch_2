@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: web
+    build: ./app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=pass123
+      - DATABASE_NAME=students
+
+  db:
+    container_name: db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass123
+      MYSQL_DATABASE: students
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
