@@ -1,0 +1,20 @@
+---
+- name: project_1
+  hosts: all
+  tasks:
+  - name: first task in project_1
+    debug:
+      msg: my first project task in ansible having data .
+  
+  - name: first task in 2
+    debug:
+      msg: my second ansible having data .
+      
+  - name: exicute from shell
+    apt:
+      name: "{{item}}"
+      state: latest
+    loop: 
+      - nginx2
+      - git
+      - python3
