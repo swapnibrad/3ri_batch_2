@@ -17,7 +17,7 @@ Below are the seven major layers/components involved in the project:
         Maven → builds Java applications
         GitHub → code repository
         Ansible → configuration management
-        JFrog Artifactory → artifact storage
+        JFrog Artifactory | S3 → artifact storage
 7️⃣ Cloud Infrastructure Layer (AWS)
     AWS services used:
         EC2 servers

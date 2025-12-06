@@ -98,7 +98,7 @@ diagnosis history, appointments, reports, and communication across multiple bran
 	Code Quality =>	SonarQube
 	Repository =>	Bitbucket
 	Monitoring	=>  Datadog
-	Config Mgmt	=>  Terraform / Ansible (optional)
+	Config Mgmt	=>  Terraform 
 
 5. Real Issue Faced in the Project
 	Problem:
