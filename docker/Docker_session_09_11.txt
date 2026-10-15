@@ -11,8 +11,8 @@ docker run <image>
 docker run -p <host_port>:<container_port> <image> => Manual port mapping
 docker run -P <image>     =>  Automatic/Random port mapping
 docker run -it <image> bash	
-docker ps	
-docker ps -a	
+docker ps	--> Lists the running container
+docker ps -a	--> LIsts all container running + stopped
 docker stop <container_id>	
 docker start <container_id>	
 docker restart <container_id>	
